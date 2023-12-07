@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Discount Eligibility Program</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <form>
+        <label for="age">Enter your age:</label>
+        <input type="number" id="age" name="age" required>
+        
+        <label for="membership">Are you a member?</label>
+        <input type="checkbox" id="membership" name="membership">
+        
+        <button type="button" id="checkEligibility">Check Eligibility</button>
+        
+        <div id="result"></div>
+    </form>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="number"] {
+    width: 100px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+input[type="checkbox"] {
+    margin-left: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#result {
+    font-size: 18px;
+    margin-top: 20px;
+}
+document.getElementById("checkEligibility").addEventListener("click", checkEligibility);
+
+function checkEligibility() {
+    const age = parseInt(document.getElementById("age").value, 10);
+    const isMember = document.getElementById("membership").checked;
+    const resultElement = document.getElementById("result");
+    
+    if (age >= 65 || (age >= 18 && isMember)) {
+        resultElement.textContent = "Congratulations! You are eligible for a discount.";
+    } else {
+        resultElement.textContent = "Sorry, you are not eligible for a discount.";
+    }
+}
+
+
